@@ -10,3 +10,11 @@ metrics:
     azure portal -> app services -> click app -> monitoring -> metrics -> cpu time, sum
     or go to autoscale and click run history
 az group delete -n <name> -y
+
+
+map:
+azure portal -> create new resource group -> go to azure maps in azure portal -> create new azure maps account resource
+get subscription key and paste in html file locally
+open html file in browser
+change center = [-74.0060, 40.7128]
+search for restaurants (fictitious)
