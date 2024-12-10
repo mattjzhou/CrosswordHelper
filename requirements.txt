@@ -1,0 +1,7 @@
+pandas
+aiohttp
+tqdm
+pyodbc
+sqlalchemy
+azure-identity
+flask

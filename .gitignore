@@ -1,3 +1,6 @@
 *.log
 __pycache__
 **/.DS_Store
+setup.txt
+**/.vscode
+test.py

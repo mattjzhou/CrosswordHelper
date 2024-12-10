@@ -1,0 +1,17 @@
+.styled-table th, .styled-table td {
+    text-align: left; /* Left-align all headers and cells */
+    padding: 8px;    /* Add padding for readability */
+}
+.styled-table {
+    width: 100%;    /* Make the table responsive */
+    border-collapse: collapse; /* Ensure neat borders */
+}
+.styled-table th {
+    background-color: #f4f4f4; /* Optional: header background */
+}
+.styled-table td {
+    border-bottom: 1px solid #ddd; /* Optional: row borders */
+}
+.nowrap {
+    white-space: nowrap;
+}
