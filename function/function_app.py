@@ -8,7 +8,7 @@ app = func.FunctionApp()
 
 
 @app.timer_trigger(
-    schedule="0 0 23 * * *",
+    schedule="0 0 4 * * *",
     arg_name="myTimer",
     run_on_startup=False,
     use_monitor=False,

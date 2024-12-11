@@ -24,8 +24,8 @@ class CrosswordScraper:
         self.clues = []
 
     async def run(self):
-        start = date.today() + date.timedelta(days=1)  # date(1993, 11, 21)
-        end = date.today() + date.timedelta(days=1)
+        start = date.today() + timedelta(days=1)  # date(1993, 11, 21)
+        end = date.today() + timedelta(days=1)
         dates = [start + timedelta(days=x) for x in range((end - start).days + 1)]
         tasks = []
         responses = []
