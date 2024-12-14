@@ -43,9 +43,9 @@ def home():
     )
 
 
-@app.route("/day", methods=["POST"])
+@app.route("/day", methods=["GET"])
 def day():
-    selected_date = request.form.get("date")
+    selected_date = request.args.get("date")
     clues_df = pd.read_sql(
         f"""
         select top 100 c.clue, c.answer, c.occurrences from clues join 
