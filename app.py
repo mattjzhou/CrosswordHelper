@@ -75,6 +75,7 @@ def day():
 @app.route("/clue", methods=["POST"])
 def clue():
     search_clue = request.form.get("search_clue")
+    search_clue = search_clue.replace("'", "''")
     df = pd.read_sql(
         f"""
         select clue, answer, count(*) as occurrences
@@ -92,6 +93,7 @@ def clue():
 @app.route("/answer", methods=["POST"])
 def answer():
     search_answer = request.form.get("search_answer")
+    search_answer = search_answer.replace("'", "''")
     df = pd.read_sql(
         f"""
         select clue, answer, count(*) as occurrences
