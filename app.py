@@ -72,13 +72,13 @@ def day():
     )
 
 
-@app.route("/clue", methods=["POST"])
+@app.route("/clue", methods=["GET"])
 def clue():
-    search_clue = request.form.get("search_clue")
+    search_clue = request.args.get("search_clue")
     search_clue = search_clue.replace("'", "''")
     df = pd.read_sql(
         f"""
-        select clue, answer, count(*) as occurrences
+        select top 100 clue, answer, count(*) as occurrences
         from clues
         where clue LIKE '%{search_clue}%' 
         group by clue, answer order by count(*) desc;
@@ -90,13 +90,13 @@ def clue():
     )
 
 
-@app.route("/answer", methods=["POST"])
+@app.route("/answer", methods=["GET"])
 def answer():
-    search_answer = request.form.get("search_answer")
+    search_answer = request.args.get("search_answer")
     search_answer = search_answer.replace("'", "''")
     df = pd.read_sql(
         f"""
-        select clue, answer, count(*) as occurrences
+        select top 100 clue, answer, count(*) as occurrences
         from clues
         where answer LIKE '{search_answer}'
         group by clue, answer order by count(*) desc;
