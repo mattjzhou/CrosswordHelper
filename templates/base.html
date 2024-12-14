@@ -11,6 +11,7 @@
         // Extract query parameters and prepopulate the form
         window.onload = function () {
             const urlParams = new URLSearchParams(window.location.search);
+            document.getElementById("date").value = urlParams.get("date") || "";
             document.getElementById("search_clue").value = urlParams.get("search_clue") || "";
             document.getElementById("search_answer").value = urlParams.get("search_answer") || "";
         };
@@ -25,7 +26,7 @@
         <div class="row gy-3 align-items-center">
             <!-- Date Selector Form -->
             <div class="col-lg-4 col-md-5 col-sm-6">
-                <form action="/day" method="POST" class="d-flex justify-content-start align-items-center flex-nowrap">
+                <form action="/day" method="get" class="d-flex justify-content-start align-items-center flex-nowrap">
                     <label for="date" class="form-label me-2 mb-0 text-nowrap">Select Date:</label>
                     <input type="date" name="date" id="date" class="form-control me-2" required>
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -52,17 +53,6 @@
         </div>
         {% block content %}{% endblock %}
     </div>
-
-    <script>
-        // Set the default date to today
-        document.addEventListener('DOMContentLoaded', () => {
-            const dateInput = document.getElementById('date');
-            let today = new Date()
-            today = new Date(today.getTime() - (today.getTimezoneOffset() * 60 * 1000));
-            today = today.toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
-            dateInput.value = today; // Set the value of the date input
-        });
-    </script>
 </body>
 
 </html>
