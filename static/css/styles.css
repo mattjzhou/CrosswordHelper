@@ -1,17 +1,87 @@
-.styled-table th, .styled-table td {
-    text-align: left; /* Left-align all headers and cells */
-    padding: 8px;    /* Add padding for readability */
+* {
+  font-family: "IBM Plex Sans", sans-serif;
+  color: #333333;
 }
-.styled-table {
-    width: 100%;    /* Make the table responsive */
-    border-collapse: collapse; /* Ensure neat borders */
+
+.divider {
+  border: 1px solid #565656;
+  background-color: #565656;
+  margin: 0;
 }
-.styled-table th {
-    background-color: #f4f4f4; /* Optional: header background */
-}
+
+.styled-table th,
 .styled-table td {
-    border-bottom: 1px solid #ddd; /* Optional: row borders */
+  text-align: left;
+  padding: 8px;
+  border: none;
 }
+
+.styled-table {
+  min-width: 35em;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1.5px solid #565656;
+  border-radius: 7px;
+}
+
+.styled-table th {
+  background-color: #cfb399;
+}
+
+.styled-table tr:nth-child(even) {
+  background-color: #f4f4f4;
+}
+
+.styled-table tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.styled-table tr:first-child th:first-child {
+  border-top-left-radius: 6px;
+}
+
+.styled-table tr:first-child th:last-child {
+  border-top-right-radius: 6px;
+}
+
+.styled-table tr:last-child td:first-child {
+  border-bottom-left-radius: 6px;
+}
+
+.styled-table tr:last-child td:last-child {
+  border-bottom-right-radius: 6px;
+}
+
 .nowrap {
-    white-space: nowrap;
+  white-space: nowrap;
+}
+
+.tables-container {
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+  justify-content: center;
+  padding-top: 1em;
+  padding-bottom: 3em;
+  background-color: #e8e0da;
+}
+
+.table-title {
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: 500;
+  margin: 0;
+  padding: 0.5em;
+}
+
+.single-table {
+  min-width: 50em;
+}
+
+.copyright {
+  text-align: center;
+  background-color: #cfb399;
+  margin: 0;
+  padding: 1em 0em;
 }

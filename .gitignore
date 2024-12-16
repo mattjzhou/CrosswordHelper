@@ -5,3 +5,4 @@ setup.txt
 **/.vscode
 test.py
 app.zip
+.env
