@@ -4,16 +4,42 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Crossword Helper</title>
-    <link
+    <!-- <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
       rel="stylesheet"
-    />
+    /> -->
     <link
       href="{{ url_for('static', filename='css/styles.css') }}"
       rel="stylesheet"
     />
+    <link
+      href="{{ url_for('static', filename='css/base.css') }}"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
     <script>
-      // Extract query parameters and prepopulate the form
+      function getMaxDate() {
+        const now = new Date();
+        const estNow = new Date(
+          now.toLocaleString("en-US", { timeZone: "America/New_York" })
+        );
+        const elevenPM = new Date(estNow);
+        elevenPM.setHours(23, 0, 0, 0);
+
+        if (estNow < elevenPM) {
+          return now.toISOString().split("T")[0];
+        } else {
+          const tomorrow = new Date(now);
+          tomorrow.setDate(now.getDate() + 1);
+          return tomorrow.toISOString().split("T")[0];
+        }
+      }
+
       window.onload = function () {
         const urlParams = new URLSearchParams(window.location.search);
         document.getElementById("date").value = urlParams.get("date") || "";
@@ -21,66 +47,58 @@
           urlParams.get("search_clue") || "";
         document.getElementById("search_answer").value =
           urlParams.get("search_answer") || "";
+
+        document.getElementById("date").setAttribute("max", getMaxDate());
       };
     </script>
   </head>
 
   <body>
-    <div class="container mt-5">
-      <a href="/" style="text-decoration: none; color: inherit">
-        <h1 class="text-center mb-4">Crossword Helper</h1>
-      </a>
-      <div class="row gy-3 align-items-center">
-        <!-- Date Selector Form -->
-        <div class="col-lg-4 col-md-5 col-sm-6">
-          <form
-            action="/day"
-            method="get"
-            class="d-flex justify-content-start align-items-center flex-nowrap"
-          >
-            <label for="date" class="form-label me-2 mb-0 text-nowrap"
-              >Select Date:</label
-            >
-            <input
-              type="date"
-              name="date"
-              id="date"
-              class="form-control me-2"
-              required
-            />
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-        </div>
-
-        <div class="col-lg-4 col-md-4 col-sm-6">
-          <form action="/clue" method="get" class="d-flex w-100">
-            <input
-              type="text"
-              name="search_clue"
-              id="search_clue"
-              class="form-control me-2"
-              placeholder="Search for a specific clue"
-              required
-            />
-            <button type="submit" class="btn btn-primary">Search</button>
-          </form>
-        </div>
-
-        <div class="col-lg-4 col-md-3 col-sm-12">
-          <form action="/answer" method="get" class="d-flex w-100">
-            <input
-              type="text"
-              name="search_answer"
-              id="search_answer"
-              class="form-control me-2"
-              placeholder="Search for a specific answer"
-              required
-            />
-            <button type="submit" class="btn btn-primary">Search</button>
-          </form>
-        </div>
+    <div class="container">
+      <div class="header-container">
+        <a href="/" class="link">
+          <h1 class="header-text">Crossword Helper</h1>
+        </a>
       </div>
+      <div class="row search-options-row">
+        <form action="/day" method="get" class="search-form">
+          <label for="date" class="form-label">Select Date:</label>
+          <input
+            type="date"
+            name="date"
+            id="date"
+            class="form-input"
+            max=""
+            required
+          />
+          <button type="submit" class="button">Submit</button>
+        </form>
+        <form action="/clue" method="get" class="search-form">
+          <input
+            type="text"
+            name="search_clue"
+            id="search_clue"
+            class="form-input"
+            placeholder="Search for a specific clue"
+            required
+          />
+          <button type="submit" class="button">Search</button>
+        </form>
+        <form action="/answer" method="get" class="search-form">
+          <input
+            type="text"
+            name="search_answer"
+            id="search_answer"
+            class="form-input"
+            placeholder="Search for a specific answer"
+            required
+          />
+          <button type="submit" class="button">Search</button>
+        </form>
+      </div>
+      <hr class="divider" />
       {% block content %}{% endblock %}
+      <p class="copyright">Copyright© 2024 by mattjozhouc.</p>
     </div>
   </body>
 </html>
