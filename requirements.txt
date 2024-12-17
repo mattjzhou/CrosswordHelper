@@ -5,3 +5,4 @@ pyodbc
 sqlalchemy
 azure-identity
 flask
+python-dotenv

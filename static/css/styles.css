@@ -23,6 +23,7 @@
   border-spacing: 0;
   border: 1.5px solid #565656;
   border-radius: 7px;
+  overflow: hidden;
 }
 
 .styled-table th {
@@ -65,6 +66,7 @@
   padding-top: 1em;
   padding-bottom: 3em;
   background-color: #e8e0da;
+  flex: 1;
 }
 
 .table-title {
@@ -83,5 +85,5 @@
   text-align: center;
   background-color: #cfb399;
   margin: 0;
-  padding: 1em 0em;
+  padding: 0.5em 0em;
 }
