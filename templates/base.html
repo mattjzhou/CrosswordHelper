@@ -30,13 +30,12 @@
         );
         const elevenPM = new Date(estNow);
         elevenPM.setHours(23, 0, 0, 0);
-
         if (estNow < elevenPM) {
-          return now.toISOString().split("T")[0];
+          return now.toLocaleDateString("en-CA");
         } else {
-          const tomorrow = new Date(now);
-          tomorrow.setDate(now.getDate() + 1);
-          return tomorrow.toISOString().split("T")[0];
+          const tomorrow = new Date(estNow);
+          tomorrow.setDate(estNow.getDate() + 1);
+          return tomorrow.toLocaleDateString("en-CA");
         }
       }
 
